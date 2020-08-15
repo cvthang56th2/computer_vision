@@ -440,7 +440,7 @@ class CharRecognizer:
 model = CharRecognizer()
 # model.train_model_svm("mnist_train.csv", "mnist_test.csv", "numbers.jpg")
 # model.train_model_nearest_centroid("mnist_train.csv", "mnist_test.csv", "numbers.jpg")
-model.train_model_nearest_centroid("character_new_chars.train", "", "test/b.png")
+model.train_model_nearest_centroid("character_new_chars.train", "", "test/e.png")
 # model.train_model("mnist_train.csv", "mnist_test.csv", "output/char.model")
 # # model.create_train_and_test_data_file('character_data', 'train.txt', 'test.txt', 2)
 # # model.extract_data_and_save('train.txt', 'character.train')
