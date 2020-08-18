@@ -2,7 +2,7 @@ import os
 import cv2
 import numpy as np
 
-from sklearn.neighbors import NearestCentroid, KNeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
 def resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     # initialize the dimensions of the image to be resized and
@@ -74,13 +74,8 @@ class CharRecognizer:
         print("Size of label", trainLabels.shape)
 
         # create a model
-        # clf = NearestCentroid()
         clf = KNeighborsClassifier()
         clf.fit(trainData, trainLabels)
-
-        # print(trainData[0, :].shape)
-        # print("Actual", trainLabels[0])
-        # print("Predict", clf.predict([trainData[0, :]]))
 
         # read,resize and convert to grayscale
         image = cv2.imread(image_file)
