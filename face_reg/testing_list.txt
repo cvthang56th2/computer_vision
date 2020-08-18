@@ -1,4 +1,4 @@
-training-data\s1/50.JPG;1
-training-data\s1/7.jpg;1
-training-data\s2/8.jpg;2
-training-data\s2/80.JPG;2
+training-data\s1/63.JPG;1
+training-data\s1/79.JPG;1
+training-data\s2/53.JPG;2
+training-data\s2/65.JPG;2

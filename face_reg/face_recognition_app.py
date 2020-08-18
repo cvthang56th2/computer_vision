@@ -1,27 +1,4 @@
 #!/usr/bin/env python
-
-'''
-Camshift tracker
-================
-
-This is a demo that shows mean-shift based tracking
-You select a color objects such as your face and it tracks it.
-This reads from video camera (0 by default, or the camera number the user enters)
-
-http://www.robinhewitt.com/research/track/camshift.html
-
-Usage:
-------
-    camshift.py [<video source>]
-
-    To initialize tracking, select the object with mouse
-
-Keys:
------
-    ESC   - exit
-    b     - toggle back-projected probability visualization
-'''
-
 import numpy as np
 import cv2
 import dlib
@@ -268,23 +245,6 @@ class FaceController(Frame):
             image, label = self.recognizer.predict(vis, ('', 'thang', 'kien'))
             if image is not None:
                 vis = image.copy()
-
-            # detection
-            # gray = cv2.cvtColor(vis, cv2.COLOR_BGR2GRAY)
-            # # detect faces in the grayscale image
-            # rects = self.detector(gray, 0)
-            #
-            # # update frame counter
-            # fps.update()
-            #
-            # # loop over the face detections
-            # for (i, rect) in enumerate(rects):
-            #     (x, y, w, h) = rect_to_bb(rect)
-            #     cv2.rectangle(vis, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            #
-            #     # # show the face number
-            #     cv2.putText(vis, "Face #{} - fps: {:7.2f}".format(i + 1, fps.fps()), (x - 10, y - 10),
-            #                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             # show the frame to our screen and increment the frame counter
             cv2.imshow("Object Detection", vis)

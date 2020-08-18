@@ -1,27 +1,3 @@
-#!/usr/bin/env python
-
-'''
-Camshift tracker
-================
-
-This is a demo that shows mean-shift based tracking
-You select a color objects such as your face and it tracks it.
-This reads from video camera (0 by default, or the camera number the user enters)
-
-http://www.robinhewitt.com/research/track/camshift.html
-
-Usage:
-------
-    camshift.py [<video source>]
-
-    To initialize tracking, select the object with mouse
-
-Keys:
------
-    ESC   - exit
-    b     - toggle back-projected probability visualization
-'''
-
 import numpy as np
 import cv2
 import dlib
@@ -63,21 +39,6 @@ def resize(image, width=None, height=None, inter=cv2.INTER_AREA):
 
     # return the resized image
     return resized
-
-
-def rect_to_bb(rect):
-    """ take a bounding predicted by dlib and convert it
-    to the format (x, y, w, h) as we would normally do with OpenCV
-
-    :param rect: rectangle predicted by dlib
-    :return: rectangle (x, y, w, h)
-    """
-    x = rect.left()
-    y = rect.top()
-    w = rect.right() - x
-    h = rect.bottom() - y
-    return x, y, w, h
-
 
 class FPS:
     def __init__(self):

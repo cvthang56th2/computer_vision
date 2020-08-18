@@ -91,13 +91,13 @@ class CharRecognizer:
                 # Get list of image file names of a character
                 image_files = os.listdir(subject_path)
                 # get a list of image in folder of current character for testing
-                test_num = []
-                while len(test_num) < num_test:
-                    rdn = np.random.randint(len(image_files), size=1)[0]
-                    if rdn not in test_num:
-                        test_num.append(rdn)
+                # test_num = []
+                # while len(test_num) < num_test:
+                #     rdn = np.random.randint(len(image_files), size=1)[0]
+                #     if rdn not in test_num:
+                #         test_num.append(rdn)
 
-                cur_img = 0
+                # cur_img = 0
                 for filename in image_files:
                     # ignore system files like .DS_Store
                     if filename.startswith("."):
@@ -106,12 +106,12 @@ class CharRecognizer:
                     abs_path = "%s/%s" % (subject_path, filename)
                     label_path = "%s%s%s" % (abs_path, SEPARATOR, label)
 
-                    if cur_img in test_num:
-                        f_test.write(label_path + '\n')
-                    else:
-                        f_train.write(label_path + '\n')
+                    # if cur_img in test_num:
+                    #     f_test.write(label_path + '\n')
+                    # else:
+                    f_train.write(label_path + '\n')
 
-                    cur_img += 1
+                    # cur_img += 1
 
         f_train.close()
         f_test.close()
@@ -229,4 +229,3 @@ class CharRecognizer:
 model = CharRecognizer()
 model.create_train_and_test_data_file('new_chars', 'train_new_chars.txt', 'test_new_chars.txt', 2)
 model.extract_char_and_save('train_new_chars.txt', 'character_new_chars.train')
-model.extract_char_and_save('test_new_chars.txt', 'character_new_chars.test')

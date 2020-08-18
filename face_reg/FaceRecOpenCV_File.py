@@ -7,37 +7,11 @@ import numpy as np
 from PIL import Image
 import dlib
 
-# In[2]:
-# ### Face Data
-
-# The more images used in training the better. Normally a lot of images are used for training a face recognizer so that
-# it can learn different looks of the same person, for example with glasses, without glasses, laughing, sad, happy,
-# crying, with beard, without beard etc. To keep our tutorial simple we are going to use only 12 images for each person.
-#
-# For example, Face data consists of total 2 persons with 12 images of each person. All data is inside _
-# `training-data`_ folder. _`training-data`_ folder contains one folder for each person and **each folder is named with
-# format `sLabel (e.g. s1, s2)` where label is actually the integer label assigned to that person**. For example folder
-# named s1 means that this folder contains images for person 1. The directory structure tree for training data is as follows:
-#
-# ```
-# training-data
-# |-------------- s1
-# |               |-- 1.jpg
-# |               |-- ...
-# |               |-- 12.jpg
-# |-------------- s2
-# |               |-- 1.jpg
-# |               |-- ...
-# |               |-- 12.jpg
-# ```
-
-
 # In[3]: Detect, Align and Crop Face From Image
 def Distance(p1, p2):
     dx = p2[0] - p1[0]
     dy = p2[1] - p1[1]
     return math.sqrt(dx * dx + dy * dy)
-
 
 def ScaleRotateTranslate(image, angle, center=None, new_center=None, scale=None, resample=Image.BICUBIC):
     if (scale is None) and (center is None):
@@ -58,51 +32,6 @@ def ScaleRotateTranslate(image, angle, center=None, new_center=None, scale=None,
     f = y - nx * d - ny * e
 
     return image.transform(image.size, Image.AFFINE, (a, b, c, d, e, f), resample=resample)
-
-
-def CropFace(image, eye_left=(0, 0), eye_right=(0, 0), offset_pct=(0.2, 0.2), dest_sz=(70, 70)):
-    # calculate offsets in original image
-    offset_h = math.floor(float(offset_pct[0]) * dest_sz[0])
-    offset_v = math.floor(float(offset_pct[1]) * dest_sz[1])
-    # get the direction
-    eye_direction = (eye_right[0] - eye_left[0], eye_right[1] - eye_left[1])
-    # calc rotation angle in radians
-    rotation = -math.atan2(float(eye_direction[1]), float(eye_direction[0]))
-    # distance between them
-    dist = Distance(eye_left, eye_right)
-    # calculate the reference eye-width
-    reference = dest_sz[0] - 2.0 * offset_h
-    # scale factor
-    scale = float(dist) / float(reference)
-    # rotate original around the left eye
-    image = ScaleRotateTranslate(image, center=eye_left, angle=rotation)
-    # crop the rotated image
-    crop_xy = (eye_left[0] - scale * offset_h, eye_left[1] - scale * offset_v)
-    crop_size = (dest_sz[0] * scale, dest_sz[1] * scale)
-    image = image.crop(
-        (int(crop_xy[0]), int(crop_xy[1]), int(crop_xy[0] + crop_size[0]), int(crop_xy[1] + crop_size[1])))
-    # resize it
-    image = image.resize(dest_sz, Image.ANTIALIAS)
-    return image
-
-
-def readFileNames(filename):
-    try:
-        inFile = open(filename)
-    except:
-        raise IOError('There is no file named path_to_created_csv_file.csv in current directory.')
-
-    picPath = []
-    picIndex = []
-
-    for line in inFile.readlines():
-        if line != '':
-            fields = line.rstrip().split(';')
-            picPath.append(fields[0])
-            picIndex.append(int(fields[1]))
-
-    return (picPath, picIndex)
-
 
 def resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     # initialize the dimensions of the image to be resized and
@@ -135,7 +64,6 @@ def resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     # return the resized image
     return resized
 
-
 def rect_to_bb(rect):
     """ take a bounding predicted by dlib and convert it
     to the format (x, y, w, h) as we would normally do with OpenCV
@@ -148,10 +76,6 @@ def rect_to_bb(rect):
     w = rect.right() - x
     h = rect.bottom() - y
     return x, y, w, h
-
-
-face_cascade = None
-
 
 class FaceRecongizerCV:
     def __init__(self, model_name=None, recognizer_type='LBP', detect_type='dlib'):
@@ -229,37 +153,6 @@ class FaceRecongizerCV:
         print("Prediction complete")
 
     def create_data_file(self, data_folder_path, out_train_file, out_test_file, num_test=10):
-        """Prepare training and testing image
-        # OpenCV face recognizer accepts data in a specific format.
-        # It accepts two vectors, one vector is of faces of all the persons and the second vector is of integer labels for
-        # each face so that when processing a face the face recognizer knows which person that particular face belongs too.
-        #
-        # For example, if we had 2 persons and 2 images for each person.
-        #
-        # ```
-        # PERSON-1    PERSON-2
-        #
-        # img1        img1
-        # img2        img2
-        # ```
-        #
-        # Then the prepare data step will produce following face and label vectors.
-        #
-        # ```
-        # FACES                        LABELS
-        #
-        # person1_img1_face              1
-        # person1_img2_face              1
-        # person2_img1_face              2
-        # person2_img2_face              2
-        # ```
-
-        :param data_folder_path: Path of image database
-        :param out_train_file: output training filename, ie: training_file.txt
-        :param out_test_file: output testing filename, ie: testing_file.txt
-        :param num_test: Number of testing image for each person in the database
-        :return:
-        """
         SEPARATOR = ";"
         f_train = open(out_train_file, "w")
         f_test = open(out_test_file, "w")
@@ -309,15 +202,6 @@ class FaceRecongizerCV:
         f_test.close()
 
     def prepare_training_data(self, training_filename):
-        """ this function will read all persons' training images, detect face from each image
-        and will return two lists of exactly same size, one list
-        of faces and another list of labels for each face
-
-        Note: for simplicity, each image only contains one face
-
-        :param training_filename: filename of training images
-        :return:
-        """
         # read all line of file, each line is an image filename
         file = open(training_filename, 'r')
         train_files = file.readlines()
@@ -345,7 +229,6 @@ class FaceRecongizerCV:
             cv2.waitKey(100)
 
             # detect and aligned face
-            # face, rect = detect_and_align_face_cv(image)
             face, rect = self.detect_and_align_face_dlib(image)
 
             # for the purpose of this tutorial
@@ -359,47 +242,7 @@ class FaceRecongizerCV:
         cv2.destroyAllWindows()
         return labels
 
-    def detect_and_align_face_cv(self, img):
-        """ Detect and align face image to ensure that all face with have the same
-        position (ie, the same eyes and nose position) before put in recognize mode.
-
-        Note: for training eigenface and fisherface, the returned face has to have
-        fixed size.
-
-        :param img: Grayscale or color image
-        :return:
-        """
-        # convert the test image to gray image as opencv face detector expects gray images
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-
-        # let's detect multiscale (some images may be closer to camera than others) images
-        # result is a list of faces
-        faces = self.detector.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5);
-
-        # if no faces are detected then return original img
-        if len(faces) == 0:
-            return None, None
-
-        # under the assumption that there will be only one face,
-        # extract the face area
-        (x, y, w, h) = faces[0]
-
-        # get the face part of the image
-        roi = gray[y:y + w, x:x + h]
-
-        return roi, faces[0]
-
     def detect_and_align_face_dlib(self, img):
-        """ Detect and align face image to ensure that all face with have the same
-        position (ie, the same eyes and nose position) before put in recognize mode.
-
-        Note: for training eigenface and fisherface, the returned face has to have
-        fixed size.
-
-        :param img: Grayscale or color image
-        :return:
-        """
         # convert the test image to gray image as opencv face detector expects gray images
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -420,15 +263,6 @@ class FaceRecongizerCV:
 
         return roi, (x, y, w, h)
     def detect_and_align_face_dlib_new(self, img):
-        """ Detect and align face image to ensure that all face with have the same
-        position (ie, the same eyes and nose position) before put in recognize mode.
-
-        Note: for training eigenface and fisherface, the returned face has to have
-        fixed size.
-
-        :param img: Grayscale or color image
-        :return:
-        """
         # convert the test image to gray image as opencv face detector expects gray images
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -476,13 +310,6 @@ class FaceRecongizerCV:
 
     # In[9]: Prediction
     def predict(self, test_img, subjects=None):
-        """recognizes the person in image passed and draws a rectangle around
-        detected face with name of the subject
-
-        :param test_img: image to recognize face
-        :param subjects: if given, assign name instead of label
-        :return:
-        """
         # make a copy of the image as we don't want to chang original image
         img = test_img.copy()
         # detect face from the image
