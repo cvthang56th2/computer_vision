@@ -509,9 +509,6 @@ class FaceRecongizerCV:
                 label_text = 'unknown'
 
             # draw a rectangle around face detected
-            print('rectrectrectrectrectrectrectrectrectrect')
-            print(rect)
-            print('rectrectrectrectrectrectrectrectrectrect')
             self.draw_rectangle(img, rect)
             # draw name of predicted person
             self.draw_text(img, label_text, rect[0], rect[1] - 5)
