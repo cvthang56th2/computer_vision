@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>imglab dataset</name>
+<comment>Created by imglab tool.</comment>
+<images>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (1).jpg'>
+    <box top='1' left='96' width='318' height='281'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (10).jpg'>
+    <box top='27' left='47' width='201' height='177'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (100).jpg'>
+    <box top='248' left='125' width='87' height='102'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (101).jpg'>
+    <box top='11' left='86' width='145' height='157'>
+      <label>corgi</label>
+    </box>
+    <box top='144' left='393' width='82' height='79'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (102).jpg'>
+    <box top='1' left='249' width='134' height='149'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (103).jpg'>
+    <box top='46' left='7' width='355' height='391'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (104).jpg'>
+    <box top='92' left='301' width='96' height='90'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (106).jpg'>
+    <box top='63' left='163' width='178' height='186'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (107).jpg'>
+    <box top='190' left='77' width='148' height='168'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (108).jpg'>
+    <box top='127' left='188' width='106' height='110'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (110).jpg'>
+    <box top='93' left='160' width='169' height='113'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (111).jpg'>
+    <box top='1' left='97' width='312' height='130'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (112).jpg'>
+    <box top='1' left='221' width='376' height='393'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (113).jpg'>
+    <box top='159' left='217' width='86' height='101'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (114).jpg'>
+    <box top='22' left='92' width='408' height='415'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (115).jpg'>
+    <box top='69' left='104' width='160' height='201'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (116).jpg'>
+    <box top='29' left='122' width='191' height='175'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (117).jpg'>
+    <box top='19' left='110' width='213' height='198'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (118).jpg'>
+    <box top='307' left='125' width='44' height='35'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (119).jpg'>
+    <box top='64' left='178' width='204' height='243'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (120).jpg'>
+    <box top='106' left='351' width='113' height='113'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (121).jpg'>
+    <box top='140' left='179' width='99' height='106'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (122).jpg'>
+    <box top='49' left='4' width='326' height='250'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (123).jpg'>
+    <box top='93' left='78' width='201' height='190'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (124).jpg'>
+    <box top='67' left='206' width='116' height='137'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (125).jpg'>
+    <box top='45' left='74' width='229' height='195'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (126).jpg'>
+    <box top='3' left='59' width='284' height='137'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (127).jpg'>
+    <box top='17' left='175' width='97' height='70'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (128).jpg'>
+    <box top='0' left='60' width='194' height='174'>
+      <label>corgi</label>
+    </box>
+  </image>
+  <image file='E:\NTU\computerVision\HOGwithSVM\test_set\corgi\corgi (129).jpg'>
+    <box top='13' left='19' width='394' height='261'>
+      <label>corgi</label>
+    </box>
+  </image>
+</images>
+</dataset>
