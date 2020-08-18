@@ -134,4 +134,4 @@ class CharRecognizer:
         return data, labels
 
 model = CharRecognizer()
-model.train_model_nearest_centroid("character_new_chars.train", "", "test/draw1.png")
+model.train_model_nearest_centroid("character_new_chars.train", "", "test/c.png")
