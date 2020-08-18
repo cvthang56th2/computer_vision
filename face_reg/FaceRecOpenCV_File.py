@@ -330,7 +330,7 @@ class FaceRecongizerCV:
             print("score: " + str(confidence))
             # get name of respective label returned by face recognizer
             # print(label)
-            if label and confidence and confidence <= 115:
+            if label and confidence and confidence <= 100:
                 if subjects is not None:
                     label_text = subjects[label]
                 else:
